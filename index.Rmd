@@ -1,0 +1,203 @@
+---
+title: "pagedown"
+subtitle: "Scientific and Analytic Reports with Paged.js"
+author: "Romain Lesur"
+date: "2021-11-12"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+background-image: url(https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/pagedown.png)
+background-size: 40%
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+---
+class: center, middle
+
+# pagedown
+
+### [pagedown.rbind.io](https://pagedown.rbind.io)
+
+---
+class: inverse, center, middle
+
+# Objectives
+
+---
+
+# Paginate R Markdown documents with<br/>CSS Paged Media
+
+R Markdown
+
+- Computational documents
+
+--
+
+- Melt text and code (R, python...)
+
+--
+
+- Document generation (`rmarkdown::render()`) evaluates the code and produces a document
+
+--
+
+- Output formats are extendable
+
+--
+
+- Relies on [pandoc](https://pandoc.org/)
+
+---
+
+# Example
+
+.pull-left[
+_Source of the document_
+
+````md
+My table:
+
+`r ''````{r}
+knitr::kable(head(iris[1:2]))
+```
+````
+]
+
+.pull-right[
+
+_Output_
+
+My table:
+
+
+```{r, echo=FALSE}
+knitr::kable(head(iris[1:2]))
+```
+]
+
+---
+class: inverse, center, middle
+
+# Why do you want to use CSS Paged Media?
+
+---
+
+# The usual technical stack
+
+R is a statistical language.
+
+To produce paginated documents, the usual stack relies on $\LaTeX$.
+
+--
+
+R Markdown users:
+
+- **scientists, researchers**: $\LaTeX$ is OK for scientific articles (read by peers)
+
+--
+
+- **data analysts**: produce dashboards, dataviz and reports for executives, stakeholders and citizen.<br>**Reports may have to comply with a corporate design system.**
+
+---
+class: center, middle
+
+### When a data analyst has to implement a design system
+
+![](https://media.giphy.com/media/7JsI3OmKBMTtjo9Dp9/giphy.gif)
+
+---
+
+# CSS Paged Media
+## Another mean to design a document
+
+--
+
+**Paged.js**: a JavaScript polyfill
+
+--
+
+Easy to integrate with R Markdown: this is the **pagedown** project
+
+--
+
+Allow data analysts to design their reports with CSS
+
+--
+
+Project started 3 years ago
+
+---
+class: inverse, center, middle
+
+# pagedown in the wild
+
+---
+
+# Builtin themes
+
+**pagedown** provides some builtin themes:
+
+- a basic one (`pagedown::html_paged`), see <https://pagedown.rbind.io/>
+
+--
+
+- a thesis (`pagedown::html_thesis`) by Brent Thorne, see <https://pagedown.rbind.io/thesis-paged/>
+
+--
+
+- a scientific journal template (_Journal of Statistical Software_), see <https://pagedown.rbind.io/jss-paged/>
+
+--
+
+- a resume (`pagedown::html_resume`), see <https://pagedown.rbind.io/html-resume/>
+
+--
+
+**pagedown** can also be extended
+
+---
+
+# Curriculum vitaes in the wild
+
+A lot of CV and... tools to build CV from data
+
+- <http://nickstrayer.me/datadrivencv/> by Nick Strayer ([@NicholasStrayer](https://twitter.com/NicholasStrayer))
+
+--
+
+- an application by Javier Elío ([@Elio_Javi](https://twitter.com/Elio_Javi)): <https://javierelio.shinyapps.io/cv_app/>
+
+
+---
+
+# Some analytics reports
+
+- Executive reports by [Joshua David Barillas](https://github.com/jdbarillas), [download the report](https://raw.githubusercontent.com/jdbarillas/executive_summary/master/2018%E2%80%9319%20Template%20for%20AACSB%E2%80%99s.pdf)
+
+--
+
+- Reports of the French scouts association by [Thomas Vroylandt](https://twitter.com/tvroylandt), <https://github.com/tvroylandt/sgdf_pagedown>
+
+--
+
+- Connecticut's Housing Data Profiles: 169 reports generated with pagedown, <https://housingprofiles.pschousing.org/>
+
+--
+
+- United Nations Refugee Agency (UNHCR) analytics reports, see [an example](https://unhcr-web.github.io/unhcRstyle/inst/examples/How_to_quickly_produce_statistical_reports.html)
+
+--
+
+- [**pagedreport**](https://github.com/rfortherestofus/pagedreport) by David Keyes and Thomas Vroylandt, new **pagedown** templates
+
+--
+
+- (WIP) Implementation of the French governmental design system <https://github.com/spyrales/gouvdown>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>pagedown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Romain Lesur" />
+    <meta name="date" content="2021-11-12" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# pagedown
+## Scientific and Analytic Reports with Paged.js
+### Romain Lesur
+### 2021-11-12
+
+---
+
+
+background-image: url(https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/pagedown.png)
+background-size: 40%
+
+
+
+---
+class: center, middle
+
+# pagedown
+
+### [pagedown.rbind.io](https://pagedown.rbind.io)
+
+---
+class: inverse, center, middle
+
+# Objectives
+
+---
+
+# Paginate R Markdown documents with&lt;br/&gt;CSS Paged Media
+
+R Markdown
+
+- Computational documents
+
+--
+
+- Melt text and code (R, python...)
+
+--
+
+- Document generation (`rmarkdown::render()`) evaluates the code and produces a document
+
+--
+
+- Output formats are extendable
+
+--
+
+- Relies on [pandoc](https://pandoc.org/)
+
+---
+
+# Example
+
+.pull-left[
+_Source of the document_
+
+````md
+My table:
+
+```{r}
+knitr::kable(head(iris[1:2]))
+```
+````
+]
+
+.pull-right[
+
+_Output_
+
+My table:
+
+
+
+| Sepal.Length| Sepal.Width|
+|------------:|-----------:|
+|          5.1|         3.5|
+|          4.9|         3.0|
+|          4.7|         3.2|
+|          4.6|         3.1|
+|          5.0|         3.6|
+|          5.4|         3.9|
+]
+
+---
+class: inverse, center, middle
+
+# Why do you want to use CSS Paged Media?
+
+---
+
+# The usual technical stack
+
+R is a statistical language.
+
+To produce paginated documents, the usual stack relies on `\(\LaTeX\)`.
+
+--
+
+R Markdown users:
+
+- **scientists, researchers**: `\(\LaTeX\)` is OK for scientific articles (read by peers)
+
+--
+
+- **data analysts**: produce dashboards, dataviz and reports for executives, stakeholders and citizen.&lt;br&gt;**Reports may have to comply with a corporate design system.**
+
+---
+class: center, middle
+
+### When a data analyst has to implement a design system
+
+![](https://media.giphy.com/media/7JsI3OmKBMTtjo9Dp9/giphy.gif)
+
+---
+
+# CSS Paged Media
+## Another mean to design a document
+
+--
+
+**Paged.js**: a JavaScript polyfill
+
+--
+
+Easy to integrate with R Markdown: this is the **pagedown** project
+
+--
+
+Allow data analysts to design their reports with CSS
+
+--
+
+Project started 3 years ago
+
+---
+class: inverse, center, middle
+
+# pagedown in the wild
+
+---
+
+# Builtin themes
+
+**pagedown** provides some builtin themes:
+
+- a basic one (`pagedown::html_paged`), see &lt;https://pagedown.rbind.io/&gt;
+
+--
+
+- a thesis (`pagedown::html_thesis`) by Brent Thorne, see &lt;https://pagedown.rbind.io/thesis-paged/&gt;
+
+--
+
+- a scientific journal template (_Journal of Statistical Software_), see &lt;https://pagedown.rbind.io/jss-paged/&gt;
+
+--
+
+- a resume (`pagedown::html_resume`), see &lt;https://pagedown.rbind.io/html-resume/&gt;
+
+--
+
+**pagedown** can also be extended
+
+---
+
+# Curriculum vitaes in the wild
+
+A lot of CV and... tools to build CV from data
+
+- &lt;http://nickstrayer.me/datadrivencv/&gt; by Nick Strayer ([@NicholasStrayer](https://twitter.com/NicholasStrayer))
+
+--
+
+- an application by Javier Elío ([@Elio_Javi](https://twitter.com/Elio_Javi)): &lt;https://javierelio.shinyapps.io/cv_app/&gt;
+
+
+---
+
+# Some analytics reports
+
+- Executive reports by [Joshua David Barillas](https://github.com/jdbarillas), [download the report](https://raw.githubusercontent.com/jdbarillas/executive_summary/master/2018%E2%80%9319%20Template%20for%20AACSB%E2%80%99s.pdf)
+
+--
+
+- Reports of the French scouts association by [Thomas Vroylandt](https://twitter.com/tvroylandt), &lt;https://github.com/tvroylandt/sgdf_pagedown&gt;
+
+--
+
+- Connecticut's Housing Data Profiles: 169 reports generated with pagedown, &lt;https://housingprofiles.pschousing.org/&gt;
+
+--
+
+- United Nations Refugee Agency (UNHCR) analytics reports, see [an example](https://unhcr-web.github.io/unhcRstyle/inst/examples/How_to_quickly_produce_statistical_reports.html)
+
+--
+
+- [**pagedreport**](https://github.com/rfortherestofus/pagedreport) by David Keyes and Thomas Vroylandt, new **pagedown** templates
+
+--
+
+- (WIP) Implementation of the French governmental design system &lt;https://github.com/spyrales/gouvdown&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

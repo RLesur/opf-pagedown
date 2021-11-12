@@ -226,6 +226,13 @@
       "Repository": "RSPM",
       "Hash": "76e0d400757e318cca33def29ccebbc2"
     },
+    "xaringan": {
+      "Package": "xaringan",
+      "Version": "0.22",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "c0ed5b878f24730ed7f4afbb95af84ae"
+    },
     "xfun": {
       "Package": "xfun",
       "Version": "0.28",
